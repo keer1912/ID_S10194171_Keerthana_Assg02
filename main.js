@@ -2,7 +2,8 @@ document.getElementById("search-btn").addEventListener("click",function(event){
     console.log(event);
     event.preventDefault();//don't reload , display result immediately once search is clicked 
     let searchText = document.getElementById('title_input').value.trim();
-    getMovies(searchText)
+    $("#search_result").empty();
+    getMovies(searchText);
 })
 
 function getMovies(searchText){
@@ -11,7 +12,6 @@ function getMovies(searchText){
     fetch(`http://www.omdbapi.com?s=`+searchText+'&apikey=9a7c1c71')
     .then(Response => Response.json())
     .then(data => {
-        eachmovie=data;
         //console.log(data)//logging as one data
         var movies = data.Search;//logging nested datas
         //console.log(movies);
@@ -32,6 +32,7 @@ function getMovies(searchText){
 
 function getInfo(id){
     //console.log(id);
+    $(".modal").css({"display":"block"});
     fetch('http://www.omdbapi.com?i='+id+'&apikey=9a7c1c71')
     .then(Response => Response.json())
     .then(data => {
@@ -43,14 +44,40 @@ function getInfo(id){
         var imdbRating = data.imdbRating;
         var BoxOffice = data.BoxOffice;
         //console.log(data);
-        console.log(poster);
-        console.log(title)
-        console.log(actors);
-        console.log(rated);
-        console.log(released);
-        console.log(imdbRating);
-        console.log(BoxOffice);
+        //console.log(poster);
+        //console.log(title)
+        //console.log(actors);
+        //console.log(rated);
+        //console.log(released);
+        //console.log(imdbRating);
+        //console.log(BoxOffice);
 
-        $(.modal)
+        $(".modal-content").append(`<h2>${title}</h2>
+                                    <img src="${poster}" class="poster-in-modal" alt="movie poster">\
+
+                                    <div class="actors-div">
+                                        <h3>Actors</h3>
+                                        <h4>${actors}</h4>
+                                    </div>
+
+                                    <div class="released-div">
+                                    <h3>Released</h3>
+                                    <h4>${released}</h4>
+                                    </div>
+                                    
+                                    <div class="imdbRating-div">
+                                    <h3>IMDB Rating</h3>
+                                    <h4>${imdbRating}</h4>
+                                    </div>
+                                    
+                                    <div class="BoxOffice-div">
+                                    <h3>IMDB Rating</h3>
+                                    <h4>${BoxOffice}</h4>
+                                    </div>`);
+
+        document.getElementById('close-modal').onclick = function(){
+            $(".modal").css({"display":"none"});
+            $(".modal-content").empty();
+        }
     })
 }
