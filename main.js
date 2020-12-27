@@ -20,15 +20,18 @@ function getMovies(searchText){
             var obj = movies[i];//Individual datas extracted from the nested portion
             console.log(obj.Title);//logging object titles
             var id = obj.imdbID;
-            document.getElementById("search_result").innerHTML += `<div>
-            <img src ="${obj.Poster}"></img>
-            <h5>${obj.Title}</h5>
-            <button id="${id}" onclick="getInfo(this.id)">Learn More</button>
-            </div><br>`;//+= to keep adding on after each set. 
-            //the this keyword will only retreive info for the movie that I select for.
+            
+            $("#search_result").append(`
+            <div class='movie-card'>
+                <img src ="${obj.Poster}"></img>\
+                <h5>${obj.Title}</h5>
+                <button id="${id}" onclick="getInfo(this.id)">Learn More</button>
+            </div>`)           
         }
     })
 }
+
+
 
 function getInfo(id){
     //console.log(id);
@@ -71,7 +74,7 @@ function getInfo(id){
                                     </div>
                                     
                                     <div class="BoxOffice-div">
-                                    <h3>IMDB Rating</h3>
+                                    <h3>Box Office</h3>
                                     <h4>${BoxOffice}</h4>
                                     </div>`);
 
