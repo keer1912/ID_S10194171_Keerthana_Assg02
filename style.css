@@ -4,9 +4,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
   text-align: center;
 }
 
-.conatiner{
-  
+.container input{
+  width: 35%;
+  height:35px;
+  border-radius: 20px;
+  border-color: rgb(109, 109, 109);
 }
+
 .movie-card{
   width: 300px;/*width of 300px*/
   height:400px;/*height of 300px*/
@@ -39,6 +43,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
+
 .modal::-webkit-scrollbar { /*removes the 1 scroll thiny*/
   width: 0;
 }

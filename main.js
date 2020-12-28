@@ -8,7 +8,6 @@ document.getElementById("search-btn").addEventListener("click",function(event){
 
 function getMovies(searchText){
     console.log(searchText);
-
     fetch(`http://www.omdbapi.com?s=`+searchText+'&apikey=9a7c1c71')
     .then(Response => Response.json())
     .then(data => {
@@ -36,6 +35,7 @@ function getMovies(searchText){
 function getInfo(id){
     //console.log(id);
     $(".modal").css({"display":"block"});
+    $('body').css("overflow", "hidden");//when i click learn more , i want the body aka the search result to be stagnent(not move).
     fetch('http://www.omdbapi.com?i='+id+'&apikey=9a7c1c71')
     .then(Response => Response.json())
     .then(data => {
@@ -81,6 +81,7 @@ function getInfo(id){
         document.getElementById('close-modal').onclick = function(){
             $(".modal").css({"display":"none"});
             $(".modal-content").empty();
+            $('body').css("overflow", "auto");//when i close the modal, I want to scroll the search result if there is a overflow.
         }
     })
 }
