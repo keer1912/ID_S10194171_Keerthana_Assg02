@@ -1,4 +1,10 @@
-body {font-family: Arial, Helvetica, sans-serif;}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url(movie.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
 
 .container{
   text-align: center;
@@ -41,10 +47,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
   top: 0;
   width: 100%; /* Full width */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  background-color:rgba(0, 0, 0, 0.945); /* Black w/ opacity */
 }
 
-.modal::-webkit-scrollbar { /*removes the 1 scroll thiny*/
+/*Standard syntax retreived from w3schools. This will remove the extra scroll bar on the right when the modal is opened.*/
+.modal::-webkit-scrollbar { 
   width: 0;
 }
 
