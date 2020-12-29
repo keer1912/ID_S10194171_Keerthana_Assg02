@@ -1,13 +1,11 @@
-body {
+body{
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url(movie.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size:cover;
+  background-color: #000;
 }
 
 .container{
   text-align: center;
+  color: wheat;
 }
 
 .container input{
@@ -17,14 +15,33 @@ body {
   border-color: rgb(109, 109, 109);
 }
 
+#title_input{
+  padding-left:15px;
+  border: none;
+}
+
+input:focus{
+  outline:none;
+}
+
 .movie-card{
   width: 300px;/*width of 300px*/
   height:400px;/*height of 300px*/
   text-align: center;
-  background:rgba(179, 145, 223, 0.253);/*card color for the first row only*/
+  background:rgba(37, 37, 37, 0.363);/*card color for the first row only*/
   box-shadow: 13px 14px 37px -21px rgba(0,0,0,0.11);
   margin:30px;/*space around the card*/
   padding:20px;/*space inside the card*/
+}
+.movie-card h5{
+  color:white;  
+  font-size:15px;
+  font-style: italic;
+  margin-top:20px;
+}
+
+.movie-card img{
+  width:200px;
 }
 
 #search_result{
@@ -33,9 +50,6 @@ body {
   justify-content: center;/*center all the card to the center of the page*/
 } 
 
-.movie-card img{
-  width:200px;
-}
 
 /* The Modal (background) */
 .modal {

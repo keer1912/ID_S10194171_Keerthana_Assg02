@@ -2,17 +2,23 @@ document.getElementById("search-btn").addEventListener("click",function(event){
     console.log(event);
     event.preventDefault();//don't reload , display result immediately once search is clicked 
     let searchText = document.getElementById('title_input').value.trim();
-    $("#search_result").empty();
-    getMovies(searchText);
+
+    if (searchText == ""){
+        alert("Please enter a film");
+    }
+    else{
+        $("#search_result").empty();
+        getMovies(searchText);
+    }
 })
 
-function getMovies(searchText){
-    console.log(searchText);
-    fetch(`http://www.omdbapi.com?s=`+searchText+'&apikey=9a7c1c71')
+async function getMovies(searchText){
+    //console.log(searchText);
+    await fetch(`http://www.omdbapi.com?s=`+searchText+'&apikey=9a7c1c71')
     .then(Response => Response.json())
     .then(data => {
         //console.log(data)//logging as one data
-        var movies = data.Search;//logging nested datas
+        var movies = data.Search;
         //console.log(movies);
         
         for(var i = 0; i < movies.length; i++) {
@@ -32,11 +38,11 @@ function getMovies(searchText){
 
 
 
-function getInfo(id){
+async function getInfo(id){
     //console.log(id);
     $(".modal").css({"display":"block"});
     $('body').css("overflow", "hidden");//when i click learn more , i want the body aka the search result to be stagnent(not move).
-    fetch('http://www.omdbapi.com?i='+id+'&apikey=9a7c1c71')
+    await fetch('http://www.omdbapi.com?i='+id+'&apikey=9a7c1c71')
     .then(Response => Response.json())
     .then(data => {
         var poster = data.Poster;
