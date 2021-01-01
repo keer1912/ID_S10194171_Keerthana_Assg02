@@ -66,47 +66,47 @@ async function getInfo(id){
         //console.log(BoxOffice);
         
         $(".modal-content").append(`
-                                    <div class="split">
-                                        
-                                        <img src="${poster}" class="poster-in-modal" alt="movie poster">
-                                    </div>       
+                                    <div class="information">
+                                        <img src="${poster}" alt="movie poster">
+                                    </div>
+                                         
                                     
                                     <div class="information">
-                                        <h3 class="movie-title">${title}</h3>
+                                        <h1 class="movie-title">${title}</h1>
 
                                         <div class="plot-div">
-                                            <p>${synopsis}<p/>
+                                            <p class="plot">${synopsis}<p/>
                                         </div>
                                         
                                         <div class="genre-div">
-                                            <h4>${genre}</h4>
+                                            <p class="highlights">${genre}</p>
                                         </div>
 
                                         <div class="director-div">
-                                            <h4>Directed by : ${director}</h4>
+                                            <h3>Directed by : ${director}</h3>
                                         </div>
 
                                         <div class="split-information">
                                             <div class="released-div">
                                                 <h3>Original Release:</h3>
-                                                <h4>${released}</h4>
+                                                <p class="highlights">${released}</p>
                                             </div>
                                             
                                             <div class="runtime-div">
                                                 <h3>Runtime:</h3>
-                                                <h4>${runtime}</h4>
+                                                <p class="highlights">${runtime}</p>
                                             </div>
                                         </div>
 
                                         <div class= "split-information">
                                             <div class="imdbRating-div">       
                                                 <h3>IMDB Rating:</h3>
-                                                <h4>${imdbRating}/10</h4>
+                                                <p class="highlights">${imdbRating}/10</p>
                                             </div>
                                             
                                             <div class="BoxOffice-div">
                                                 <h3>Box Office:</h3>
-                                                <h4>${BoxOffice}</h4>
+                                                <p class="highlights">${BoxOffice}</p>
                                             </div>
                                         </div>
 
