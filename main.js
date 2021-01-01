@@ -17,7 +17,7 @@ async function getMovies(searchText){
     await fetch(`http://www.omdbapi.com?s=`+searchText+'&apikey=9a7c1c71')
     .then(Response => Response.json())
     .then(data => {
-        //console.log(data)//logging as one data
+        console.log(data)//logging as one data
         var movies = data.Search;
         //console.log(movies);
         
@@ -39,7 +39,7 @@ async function getMovies(searchText){
 
 
 async function getInfo(id){
-    //console.log(id);
+    console.log(id);
     $(".modal").css({"display":"block"});
     $('body').css("overflow", "hidden");//when i click learn more , i want the body aka the search result to be stagnent(not move).
     await fetch('http://www.omdbapi.com?i='+id+'&apikey=9a7c1c71')
@@ -52,6 +52,10 @@ async function getInfo(id){
         var released = data.Released;
         var imdbRating = data.imdbRating;
         var BoxOffice = data.BoxOffice;
+        var synopsis = data.Plot;
+        var genre = data.Genre;
+        var director = data.Director;
+        var runtime = data.Runtime;
         //console.log(data);
         //console.log(poster);
         //console.log(title)
@@ -60,34 +64,61 @@ async function getInfo(id){
         //console.log(released);
         //console.log(imdbRating);
         //console.log(BoxOffice);
-
-        $(".modal-content").append(`<h2>${title}</h2>
-                                    <img src="${poster}" class="poster-in-modal" alt="movie poster">\
-
-                                    <div class="actors-div">
-                                        <h3>Actors</h3>
-                                        <h4>${actors}</h4>
-                                    </div>
-
-                                    <div class="released-div">
-                                    <h3>Released</h3>
-                                    <h4>${released}</h4>
-                                    </div>
+        
+        $(".modal-content").append(`
+                                    <div class="split">
+                                        
+                                        <img src="${poster}" class="poster-in-modal" alt="movie poster">
+                                    </div>       
                                     
-                                    <div class="imdbRating-div">
-                                    <h3>IMDB Rating</h3>
-                                    <h4>${imdbRating}</h4>
-                                    </div>
-                                    
-                                    <div class="BoxOffice-div">
-                                    <h3>Box Office</h3>
-                                    <h4>${BoxOffice}</h4>
+                                    <div class="information">
+                                        <h3 class="movie-title">${title}</h3>
+
+                                        <div class="plot-div">
+                                            <p>${synopsis}<p/>
+                                        </div>
+                                        
+                                        <div class="genre-div">
+                                            <h4>${genre}</h4>
+                                        </div>
+
+                                        <div class="director-div">
+                                            <h4>Directed by : ${director}</h4>
+                                        </div>
+
+                                        <div class="split-information">
+                                            <div class="released-div">
+                                                <h3>Original Release:</h3>
+                                                <h4>${released}</h4>
+                                            </div>
+                                            
+                                            <div class="runtime-div">
+                                                <h3>Runtime:</h3>
+                                                <h4>${runtime}</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class= "split-information">
+                                            <div class="imdbRating-div">       
+                                                <h3>IMDB Rating:</h3>
+                                                <h4>${imdbRating}/10</h4>
+                                            </div>
+                                            
+                                            <div class="BoxOffice-div">
+                                                <h3>Box Office:</h3>
+                                                <h4>${BoxOffice}</h4>
+                                            </div>
+                                        </div>
+
                                     </div>`);
-
+                                    
         document.getElementById('close-modal').onclick = function(){
             $(".modal").css({"display":"none"});
             $(".modal-content").empty();
+            $(".movie-title").empty();
             $('body').css("overflow", "auto");//when i close the modal, I want to scroll the search result if there is a overflow.
         }
     })
 }
+
+
