@@ -1,5 +1,5 @@
 document.getElementById("search-btn").addEventListener("click",function(event){
-    console.log(event);
+    console.log(event);//Showing the mouse event on the log.
     event.preventDefault();//don't reload , display result immediately once search is clicked 
     let searchText = document.getElementById('title_input').value.trim();
 
@@ -10,6 +10,9 @@ document.getElementById("search-btn").addEventListener("click",function(event){
         $("#search_result").empty();
         getMovies(searchText);
     }
+
+    
+
 })
 
 async function getMovies(searchText){
@@ -17,7 +20,12 @@ async function getMovies(searchText){
     await fetch(`http://www.omdbapi.com?s=`+searchText+'&apikey=9a7c1c71')
     .then(Response => Response.json())
     .then(data => {
-        console.log(data)//logging as one data
+        console.log(data);//logging as one data
+        
+        /*if (data.Error = "Movie not found"){
+            alert("Please enter a valid movie");
+        }*/
+
         var movies = data.Search;
         //console.log(movies);
         
@@ -56,6 +64,16 @@ async function getInfo(id){
         var genre = data.Genre;
         var director = data.Director;
         var runtime = data.Runtime;
+        var production = data.Production;
+
+        if (BoxOffice==undefined){
+            var BoxOffice = "N/A";
+        }
+
+        if(production == "N/A"||production == undefined){
+            var production = "";
+        }
+
         //console.log(data);
         //console.log(poster);
         //console.log(title)
@@ -64,7 +82,6 @@ async function getInfo(id){
         //console.log(released);
         //console.log(imdbRating);
         //console.log(BoxOffice);
-        
         $(".modal-content").append(`
                                     <div class="information">
                                         <img src="${poster}" alt="movie poster">
@@ -75,15 +92,12 @@ async function getInfo(id){
                                         <h1 class="movie-title">${title}</h1>
 
                                         <div class="plot-div">
-                                            <p class="plot">${synopsis}<p/>
+                                            <p class="plot">${synopsis}</p>
                                         </div>
                                         
                                         <div class="genre-div">
                                             <p class="highlights">${genre}</p>
-                                        </div>
-
-                                        <div class="director-div">
-                                            <h3>Directed by : ${director}</h3>
+                                            <p class="produced">${production}</p>  
                                         </div>
 
                                         <div class="split-information">
@@ -101,7 +115,7 @@ async function getInfo(id){
                                         <div class= "split-information">
                                             <div class="imdbRating-div">       
                                                 <h3>IMDB Rating:</h3>
-                                                <p class="highlights">${imdbRating}/10</p>
+                                                <p class="highlights">${imdbRating} / 10</p>
                                             </div>
                                             
                                             <div class="BoxOffice-div">
@@ -117,6 +131,7 @@ async function getInfo(id){
             $(".modal-content").empty();
             $(".movie-title").empty();
             $('body').css("overflow", "auto");//when i close the modal, I want to scroll the search result if there is a overflow.
+            $(".modal-content").append(`<button id = "close-modal">X</button>`)    
         }
     })
 }
