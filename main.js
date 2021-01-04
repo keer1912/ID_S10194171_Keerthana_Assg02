@@ -106,6 +106,8 @@ async function getInfo(id){
                                             <p class="plot">${synopsis}</p>
                                         </div>
                                         
+                                        <div class="age-rating-div">
+                                        </div>
                                         <div class="genre-div">
                                             <p class="highlights">${genre}</p>
                                             <p class="produced">${production}</p>  
@@ -126,7 +128,7 @@ async function getInfo(id){
                                         <div class= "split-information">
                                             <div class="imdbRating-div">       
                                                 <h3>IMDB Rating:</h3>
-                                                <p class="highlights">${imdbRating} / 10</p>
+                                                <p class="highlights">${imdbRating}/ 10</p>
                                             </div>
                                             
                                             <div class="BoxOffice-div">
