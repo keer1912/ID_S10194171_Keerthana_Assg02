@@ -72,6 +72,7 @@ async function getInfo(id){
         var director = data.Director;
         var runtime = data.Runtime;
         var production = data.Production;
+        var type = data.Type;
         
         if (BoxOffice==undefined){
             var BoxOffice = "N/A";
@@ -85,6 +86,21 @@ async function getInfo(id){
             var poster = "not-found-image.jpg";
         }
 
+        if (type == "series"){
+            var TypeIdentify = "Television Rating : ";
+        }
+
+        if (type == "movie"){
+            var TypeIdentify = "Movie Rating : ";
+        }
+
+        if (production == ""){
+            var producedText = "";
+        }
+        else{
+            var producedText = "Produced by";
+        }
+        
         //console.log(data);
         //console.log(poster);
         //console.log(title)
@@ -102,15 +118,17 @@ async function getInfo(id){
                                     <div class="information">
                                         <h1 class="movie-title">${title}</h1>
 
+                                        <div class="rated-div">
+                                            <p class="rated">${TypeIdentify} ${rated}</p>
+                                        </div>
+
                                         <div class="plot-div">
                                             <p class="plot">${synopsis}</p>
                                         </div>
-                                        
-                                        <div class="age-rating-div">
-                                        </div>
+
                                         <div class="genre-div">
                                             <p class="highlights">${genre}</p>
-                                            <p class="produced">${production}</p>  
+                                            <p class="produced">${producedText} ${production}</p>  
                                         </div>
 
                                         <div class="split-information">
@@ -128,7 +146,7 @@ async function getInfo(id){
                                         <div class= "split-information">
                                             <div class="imdbRating-div">       
                                                 <h3>IMDB Rating:</h3>
-                                                <p class="highlights">${imdbRating}/ 10</p>
+                                                <p class="highlights">${imdbRating} / 10</p>
                                             </div>
                                             
                                             <div class="BoxOffice-div">
