@@ -11,7 +11,7 @@ document.getElementById("search-btn").addEventListener("click",function(event){
         getMovies(searchText);// Else , go ahead with retrieving the results
     }
 })
-
+  
 async function getMovies(searchText){
     //console.log(searchText);
     await fetch(`http://www.omdbapi.com?s=`+searchText+'&apikey=9a7c1c71')
@@ -29,8 +29,8 @@ async function getMovies(searchText){
     
         var movies = data.Search;
         //console.log(movies);
-
         let styleName = "";
+
         for(var i = 0; i < movies.length; i++) {
             var obj = movies[i];//Individual datas extracted from the nested portion
 
@@ -40,6 +40,9 @@ async function getMovies(searchText){
             }
 
             console.log(obj.Title);//logging object titles
+
+            arr.push(obj.Title);
+            
             var id = obj.imdbID;
             $("#search_result").append(`
             <div class='movie-card'>
@@ -72,7 +75,7 @@ async function getInfo(id){
         var director = data.Director;
         var runtime = data.Runtime;
         var production = data.Production;
-
+        
         if (BoxOffice==undefined){
             var BoxOffice = "N/A";
         }
