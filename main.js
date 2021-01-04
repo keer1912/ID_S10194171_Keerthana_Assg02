@@ -83,7 +83,6 @@ async function getInfo(id){
 
         if(poster == "N/A"){
             var poster = "not-found-image.jpg";
-            styleName = "na";
         }
 
         //console.log(data);
@@ -96,7 +95,7 @@ async function getInfo(id){
         //console.log(BoxOffice);
         $(".modal-content").append(`
                                     <div class="information">
-                                        <img class="${styleName}" src="${poster}" alt="movie poster">
+                                        <img src="${poster}" alt="movie poster">
                                     </div>
                                          
                                     
