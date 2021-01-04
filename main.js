@@ -40,9 +40,6 @@ async function getMovies(searchText){
             }
 
             console.log(obj.Title);//logging object titles
-
-            arr.push(obj.Title);
-            
             var id = obj.imdbID;
             $("#search_result").append(`
             <div class='movie-card'>
