@@ -4,19 +4,19 @@
 body{
   font-family: 'Poppins', sans-serif;
   background-color: #000;
-  background-image: url(movie.jpg);
+  background-image: url(clapperboard.png);
   background-size:cover;
   background-position: center;
   background-attachment: fixed;
 }
 
+
 .container{
+  margin-top: 50px;
   text-align: center;
-  color: wheat;
 }
 
 .container input{
-  width: 35%;
   height:35px;
   background-color: rgba(0, 0, 0, 0);
   border-top:none;
@@ -24,24 +24,34 @@ body{
   border-right:none;
   color: white;
   border-color: rgb(243, 243, 243);
+  font-size:20px;
 }
-
 
 .container button{
   height:35px;
   border-radius: 40px;
-  width:80px;
-  background-color:rgb(204, 40, 40);
+  width:65px;
+  background-color:rgba(204, 40, 40, 0);
+  background-color: rgb(4, 255, 4);
   border: none;
+  outline: none;
 }
 
 input:focus{
   outline:none;
 }
 
+.not_found{
+  margin-top:20px;
+  color:white;
+  font-size:30px;
+  background-color: rgba(0, 0, 0, 0.26);
+  padding:20px;
+  font-style: italic;
+}
 .movie-card{
-  width: 300px;/*width of 300px*/
-  height:420px;/*height of 300px*/
+  width: 310px;/*width of 300px*/
+  height:440px;/*height of 300px*/
   text-align: center;
   background:rgba(0, 0, 0, 0.788);/*card color for the first row only*/
   box-shadow: 13px 14px 37px -21px rgba(0,0,0,0.11);
@@ -54,18 +64,26 @@ input:focus{
   font-style: italic;
 }
 
+.na{
+  object-fit: cover;
+
+}
 .movie-card button{
   background-color: rgb(255, 255, 255);
   height:35px;
   border:none;
   border-radius:50px;
   width:100px;
+  outline: none;
 }
 button:hover{
   cursor:pointer;
 }
 .movie-card img{
-  width:180px;
+  width:200px;
+  height:300px;
+  display: block;
+  margin: auto;
 }
 
 #search_result{
@@ -80,19 +98,18 @@ button:hover{
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top:70px;
+  padding-top:50px;
   left: 0;
   top: 0;
   width: 100%; /* Full width */
   overflow: auto; /* Enable scroll if needed */
-  background-color:rgb(0, 0, 0); /* Black w/ opacity */
+  background-color:rgba(0, 0, 0, 0.75); /* Black w/ opacity */
   height:100%;
-
 }
 
 /* Modal Content */
 .modal-content {
-  background-color:rgba(34, 34, 34, 0.884); /* Black w/ opacity */
+  background-color:rgb(15, 15, 15); /* Black w/ opacity */
   color:white;
   margin: auto;
   width: 65%;
@@ -100,6 +117,7 @@ button:hover{
   flex-wrap: wrap;
   flex-direction: row;
   padding:30px;
+  margin-bottom: 50px;
   position:relative;
 }
 
@@ -122,12 +140,14 @@ button:hover{
   margin:0px;
   font-size:28px;
   font-weight: 900;
-  color:rgb(0, 255, 149)
+  color:#00ff80;
 }
 
 .produced{
   margin:0px;
-  font-style: italic;
+  font-weight: 500;
+  font-size:17px;
+  font-family: 'Oswald', sans-serif;
 }
 
 h3{
@@ -147,7 +167,7 @@ h3{
 }
 
 .information img{
-  width:280px;
+  width:290px;
   padding:15px;
   margin: auto;
 }
@@ -159,7 +179,7 @@ h3{
 
 .directed{
   margin-top:0px;
-  margin-bottom: 0px;;
+  margin-bottom: 0px;
   font-size:20px;
   font-style:italic;
 }
@@ -175,6 +195,7 @@ h3{
   height:40px;
   border-radius: 40px;
   border-color:rgba(255, 255, 255, 0);
+  outline: none;
 }
 
 #close:hover,
@@ -194,8 +215,9 @@ h3{
     width:100%;
     margin:auto;
   }
+
   .movie-title{
-    font-size:25px;
+    font-size:20px;
   }
 }
 

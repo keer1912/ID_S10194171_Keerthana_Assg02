@@ -1,18 +1,15 @@
 document.getElementById("search-btn").addEventListener("click",function(event){
     console.log(event);//Showing the mouse event on the log.
     event.preventDefault();//don't reload , display result immediately once search is clicked 
-    let searchText = document.getElementById('title_input').value.trim();
+    let searchText = document.getElementById('title_input').value.trim();//get the value of the movie - title
 
     if (searchText == ""){
-        alert("Please enter a film");
+        alert("Please enter a film");// if the search text recieved is empty , alert to the user
     }
     else{
-        $("#search_result").empty();
-        getMovies(searchText);
+        $("#search_result").empty();// Ensure that the search results portion is empty everytime the user enters a movie to search. if this line doesnt exist it will just append to the prev result.
+        getMovies(searchText);// Else , go ahead with retrieving the results
     }
-
-    
-
 })
 
 async function getMovies(searchText){
@@ -21,22 +18,32 @@ async function getMovies(searchText){
     .then(Response => Response.json())
     .then(data => {
         console.log(data);//logging as one data
-        
-        /*if (data.Error = "Movie not found"){
-            alert("Please enter a valid movie");
-        }*/
 
+                
+        if (data.Error == "Movie not found!"){
+            $("#search_result").append(`
+            <div class="not_found">
+                <p>Movie not found , Please enter another title</p>
+            </div>`)      
+        }
+    
         var movies = data.Search;
         //console.log(movies);
-        
+
+        let styleName = "";
         for(var i = 0; i < movies.length; i++) {
             var obj = movies[i];//Individual datas extracted from the nested portion
+
+            if (obj.Poster == "N/A"){
+                obj.Poster = "not-found-image.jpg";
+                styleName = "na";
+            }
+
             console.log(obj.Title);//logging object titles
             var id = obj.imdbID;
-            
             $("#search_result").append(`
             <div class='movie-card'>
-                <img src ="${obj.Poster}"></img>\
+                <img class="${styleName}" src ="${obj.Poster}"></img>\
                 <h5>${obj.Title}</h5>
                 <button id="${id}" onclick="getInfo(this.id)">Learn More</button>
             </div>`)           
@@ -74,6 +81,11 @@ async function getInfo(id){
             var production = "";
         }
 
+        if(poster == "N/A"){
+            var poster = "not-found-image.jpg";
+            styleName = "na";
+        }
+
         //console.log(data);
         //console.log(poster);
         //console.log(title)
@@ -84,7 +96,7 @@ async function getInfo(id){
         //console.log(BoxOffice);
         $(".modal-content").append(`
                                     <div class="information">
-                                        <img src="${poster}" alt="movie poster">
+                                        <img class="${styleName}" src="${poster}" alt="movie poster">
                                     </div>
                                          
                                     
