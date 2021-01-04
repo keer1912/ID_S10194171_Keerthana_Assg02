@@ -137,7 +137,6 @@ async function getInfo(id){
                                                 <p class="highlights">${BoxOffice}</p>
                                             </div>
                                         </div>
-
                                     </div>`);
                                     
         document.getElementById('close-modal').onclick = function(){
