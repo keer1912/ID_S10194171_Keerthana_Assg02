@@ -41,6 +41,7 @@ input {
   cursor: pointer; 
   background-color: #6b7f9200; 
   transform: translateX(2px); 
+  outline:none;
 }
 
 .fa.fa-search{
