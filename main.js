@@ -23,7 +23,7 @@ async function getMovies(searchText){
         if (data.Error == "Movie not found!"){
             $("#search_result").append(`
             <div class="not_found">
-                <p>Search results for <span>${searchText}</span> not found</p>
+                <p>Search results for <span class="not-found-alert">${searchText}</span> not found</p>
                 <p>Please enter another title</p>
             </div>`)      
         }
@@ -46,7 +46,7 @@ async function getMovies(searchText){
             <div class='movie-card'>
                 <img class="${styleName}" src ="${obj.Poster}"></img>\
                 <h5>${obj.Title}</h5>
-                <button id="${id}" onclick="getInfo(this.id)">Learn More</button>
+                <button id="${id}" class="movie-card-btn" onclick="getInfo(this.id)">Learn More</button>
             </div>`)           
         }
     })
@@ -119,10 +119,12 @@ async function getInfo(id){
                                     <div class="information">
                                         <img src="${poster}" alt="movie poster">
                                     </div>
-                                         
-                                    
+
                                     <div class="information">
+
+
                                         <h1 class="movie-title">${title}</h1>
+                                        <button id = "favourite-btn"><span>☆</span></button>
 
                                         <div class="rated-div">
                                             <p class="rated">${TypeIdentify} ${rated}</p>

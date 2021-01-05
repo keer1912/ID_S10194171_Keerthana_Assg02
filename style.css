@@ -10,10 +10,7 @@ body{
   background-position: center;
   background-attachment: fixed;
 }
-.container { 
-  margin:auto;
-  position: relative; 
-} 
+
 .logo{
   margin-top: 5px;
 }
@@ -34,6 +31,10 @@ header{
 }
 
 
+.container { 
+  margin:auto;
+  position: relative; 
+} 
 input { 
   font-size:20px;
   color:white;
@@ -71,6 +72,7 @@ input {
   font-size: 22px;
 }
 
+
 input:focus{
   outline:none;
 }
@@ -83,7 +85,7 @@ input:focus{
   background-color: rgba(0, 0, 0, 0.415);
   padding:15px;
 }
-span{
+.not-found-alert{
   font-style: italic;
   font-weight: 700;
   color:yellow;
@@ -170,6 +172,7 @@ button:hover{
   margin:0;
   font-size:35px;
 }
+
 .modal-content h4{
   font-size:25px;
 }
@@ -272,7 +275,7 @@ h3{
   }
 
   .movie-title{
-    font-size:20px;
+    font-size:25px;
   }
 
   input{
