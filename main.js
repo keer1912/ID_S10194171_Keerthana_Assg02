@@ -23,7 +23,8 @@ async function getMovies(searchText){
         if (data.Error == "Movie not found!"){
             $("#search_result").append(`
             <div class="not_found">
-                <p>Movie not found , Please enter another title</p>
+                <p>Search results for <span>${searchText}</span> not found</p>
+                <p>Please enter another title</p>
             </div>`)      
         }
     
@@ -87,12 +88,17 @@ async function getInfo(id){
         }
 
         if (type == "series"){
-            var TypeIdentify = "Television Rating : ";
+            var TypeIdentify = "Television Age Rating : ";
         }
 
         if (type == "movie"){
-            var TypeIdentify = "Movie Rating : ";
+            var TypeIdentify = "Movie Age Rating : ";
         }
+
+        if (type == "game"){
+            var TypeIdentify = "Game Age Rating : ";
+        }
+
 
         if (production == ""){
             var producedText = "";
