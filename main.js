@@ -123,7 +123,7 @@ async function getInfo(id){
                                     <div class="information">
                                         <div>
                                             <h1 class="movie-title">${title}</h1>
-                                            <button id = "favourite-btn"><span>☆</span></button>
+                                            <button class = "favourite-btn" id="${id}" onclick="favItem(this.id)"><span title="Click to add to favourites">☆</span></button>
                                         </div>
 
                                         <div class="rated-div">
@@ -174,4 +174,26 @@ async function getInfo(id){
     })
 }
 
+function favItem(id){
+    await fetch('http://www.omdbapi.com?i='+id+'&apikey=9a7c1c71')
+    .then(Response => Response.json())
+    .then(data => {
+        var poster = data.Poster;
+        var title = data.Title;
+        var actors = data.Actors;
+        var rated = data.Rated;
+        var released = data.Released;
+        var imdbRating = data.imdbRating;
+        var BoxOffice = data.BoxOffice;
+        var synopsis = data.Plot;
+        var genre = data.Genre;
+        var director = data.Director;
+        var runtime = data.Runtime;
+        var production = data.Production;
+        var type = data.Type;
+                    
+       
+    })
+    
+}
 
