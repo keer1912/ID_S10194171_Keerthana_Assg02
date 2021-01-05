@@ -121,10 +121,10 @@ async function getInfo(id){
                                     </div>
 
                                     <div class="information">
-
-
-                                        <h1 class="movie-title">${title}</h1>
-                                        <button id = "favourite-btn"><span>☆</span></button>
+                                        <div>
+                                            <h1 class="movie-title">${title}</h1>
+                                            <button id = "favourite-btn"><span>☆</span></button>
+                                        </div>
 
                                         <div class="rated-div">
                                             <p class="rated">${TypeIdentify} ${rated}</p>

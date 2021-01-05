@@ -72,7 +72,6 @@ input {
   font-size: 22px;
 }
 
-
 input:focus{
   outline:none;
 }
@@ -139,6 +138,9 @@ button:hover{
   justify-content: center;/*center all the card to the center of the page*/
 } 
 
+#favourite-btn{
+  display: inline-block;
+}
 
 /* The Modal (background) */
 .modal {
@@ -169,6 +171,7 @@ button:hover{
 }
 
 .movie-title{
+  display:inline-block;
   margin:0;
   font-size:35px;
 }
