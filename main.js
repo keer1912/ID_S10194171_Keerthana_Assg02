@@ -7,6 +7,7 @@ document.getElementById("search-btn").addEventListener("click",function(event){
         alert("Please enter a film");// if the search text recieved is empty , alert to the user
     }
     else{
+        $("#fav_modal").empty();
         $("#search_result").empty();// Ensure that the search results portion is empty everytime the user enters a movie to search. if this line doesnt exist it will just append to the prev result.
         getMovies(searchText);// Else , go ahead with retrieving the results
     }
@@ -169,11 +170,12 @@ async function getInfo(id){
             $(".modal-content").empty();
             $(".movie-title").empty();
             $('body').css("overflow", "auto");//when i close the modal, I want to scroll the search result if there is a overflow.
-            $(".modal-content").append(`<button id = "close-modal">X</button>`)    
+            $(".modal-content").append(`<button id = "close-modal">X</button>`);   
         }
     })
 }
 
+//event listener for favorite button
 $(document).ready(function () {
     $(".favourite-btn").click(function (event) {
       event.preventDefault();
@@ -182,8 +184,7 @@ $(document).ready(function () {
 });
 
 async function favItem(id){
-
-    console.log(id);
+    //console.log(id);
     $(".modal").css({"display":"block"});
     $('body').css("overflow", "hidden");//when i click learn more , i want the body aka the search result to be stagnent(not move).
     await fetch('http://www.omdbapi.com?i='+id+'&apikey=9a7c1c71')
@@ -193,26 +194,55 @@ async function favItem(id){
         var title = data.Title;
         var rated = data.Rated;
     
-        var Existing = JSON.parse(localStorage.getItem("allEntries"));
+        var Existing = JSON.parse(localStorage.getItem("Favourite Entries"));
     
         //Check if item is existant in the localstorage
          if (Existing == null) {
         
         // if the value is null , it creates an empty array
-        Existing = [];
+            Existing = [];
         }
 
         //making an array for the data collected , with necessary details 
 
         const latestFav = {Poster:`${poster}`, Title:`${title}`, Rated:`${rated}`};
 
+        //adds only new array , ignores duplicate
+        let set =new Set(latestFav)
         // Pushes input value to Array
-        Existing.push(latestFav);
+        Existing.push(set);
 
         // Save allEntries back to local storage
         localStorage.setItem("Favourite Entries", JSON.stringify(Existing));
         //localStorage.clear();
-    })
-    
+    })   
 }
+
+    document.getElementById("fav-btn").addEventListener("click",function(event){
+        $("#search_result").empty();
+        console.log(event);//Showing the mouse event on the log.
+        event.preventDefault();//don't reload , display result immediately once search is clicked
+
+
+        let Existing = localStorage.getItem("Favourite Entries");
+        let state =    JSON.parse(Existing); 
+        let styleName="";
+        
+        for (const[key,value] of Object.entries(state)){
+            //console.log(value.Poster);
+
+            if (value.Poster == "N/A"){
+                value.Poster = "not-found-image.jpg";
+                styleName = "na";
+            }
+
+            $("#fav_modal").append(`
+            <div>
+                <img class="${styleName}" src ="${value.Poster}"></img>\
+                <h5>${value.Title}</h5>
+                <h5>${value.Rated}</h5>
+                <button>Learn More</button>
+            </div>`)  
+        }
+    })
 
