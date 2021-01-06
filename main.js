@@ -174,25 +174,44 @@ async function getInfo(id){
     })
 }
 
-function favItem(id){
+$(document).ready(function () {
+    $(".favourite-btn").click(function (event) {
+      event.preventDefault();
+      favItem(id);
+    });
+});
+
+async function favItem(id){
+
+    console.log(id);
+    $(".modal").css({"display":"block"});
+    $('body').css("overflow", "hidden");//when i click learn more , i want the body aka the search result to be stagnent(not move).
     await fetch('http://www.omdbapi.com?i='+id+'&apikey=9a7c1c71')
     .then(Response => Response.json())
     .then(data => {
         var poster = data.Poster;
         var title = data.Title;
-        var actors = data.Actors;
         var rated = data.Rated;
-        var released = data.Released;
-        var imdbRating = data.imdbRating;
-        var BoxOffice = data.BoxOffice;
-        var synopsis = data.Plot;
-        var genre = data.Genre;
-        var director = data.Director;
-        var runtime = data.Runtime;
-        var production = data.Production;
-        var type = data.Type;
-                    
-       
+    
+        var Existing = JSON.parse(localStorage.getItem("allEntries"));
+    
+        //Check if item is existant in the localstorage
+         if (Existing == null) {
+        
+        // if the value is null , it creates an empty array
+        Existing = [];
+        }
+
+        //making an array for the data collected , with necessary details 
+
+        const latestFav = {Poster:`${poster}`, Title:`${title}`, Rated:`${rated}`};
+
+        // Pushes input value to Array
+        Existing.push(latestFav);
+
+        // Save allEntries back to local storage
+        localStorage.setItem("Favourit Entries", JSON.stringify(Existing));
+        //localStorage.clear();
     })
     
 }
