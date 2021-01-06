@@ -210,7 +210,7 @@ async function favItem(id){
         Existing.push(latestFav);
 
         // Save allEntries back to local storage
-        localStorage.setItem("Favourit Entries", JSON.stringify(Existing));
+        localStorage.setItem("Favourite Entries", JSON.stringify(Existing));
         //localStorage.clear();
     })
     
