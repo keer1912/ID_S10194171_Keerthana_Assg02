@@ -7,7 +7,6 @@ document.getElementById("search-btn").addEventListener("click",function(event){
         alert("Please enter a film");// if the search text recieved is empty , alert to the user
     }
     else{
-        $("#fav_modal").empty();
         $("#search_result").empty();// Ensure that the search results portion is empty everytime the user enters a movie to search. if this line doesnt exist it will just append to the prev result.
         getMovies(searchText);// Else , go ahead with retrieving the results
     }
@@ -177,7 +176,7 @@ async function getInfo(id){
 
 //event listener for favorite button
 $(document).ready(function () {
-    $(".favourite-btn").click(function (event) {
+    $("favourite-btn").click(function (event) {
       event.preventDefault();
       favItem(id);
     });
@@ -204,21 +203,17 @@ async function favItem(id){
         }
 
         //making an array for the data collected , with necessary details 
-
         const latestFav = {Poster:`${poster}`, Title:`${title}`, Rated:`${rated}`};
-
-        //adds only new array , ignores duplicate
-        let set =new Set(latestFav)
         // Pushes input value to Array
-        Existing.push(set);
 
+        Existing.push(latestFav);
         // Save allEntries back to local storage
         localStorage.setItem("Favourite Entries", JSON.stringify(Existing));
-        //localStorage.clear();
     })   
 }
 
     document.getElementById("fav-btn").addEventListener("click",function(event){
+        $("#fav-modal").empty();
         $("#search_result").empty();
         console.log(event);//Showing the mouse event on the log.
         event.preventDefault();//don't reload , display result immediately once search is clicked
@@ -227,7 +222,7 @@ async function favItem(id){
         let Existing = localStorage.getItem("Favourite Entries");
         let state =    JSON.parse(Existing); 
         let styleName="";
-        
+
         for (const[key,value] of Object.entries(state)){
             //console.log(value.Poster);
 
@@ -236,13 +231,18 @@ async function favItem(id){
                 styleName = "na";
             }
 
-            $("#fav_modal").append(`
-            <div>
-                <img class="${styleName}" src ="${value.Poster}"></img>\
-                <h5>${value.Title}</h5>
-                <h5>${value.Rated}</h5>
-                <button>Learn More</button>
+            $("#fav-modal").append(`
+            <div class="card-container">
+                <div class="image_box">
+                    <img class="${styleName}" src ="${value.Poster}"></img>
+                </div>\
+                <div class="content">
+                    <h5 class="highlights">${value.Title}</h5>
+                    <h5>${value.Rated}</h5>
+                    <button><span title="Click to add to favourites">☆</span></button>
+                </div>
             </div>`)  
         }
+        
     })
 
