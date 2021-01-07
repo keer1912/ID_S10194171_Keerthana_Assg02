@@ -1,11 +1,3 @@
-
-document.getElementById("topEntertainment-btn").addEventListener("click",function(event){
-    console.log(event);//Showing the mouse event on the log.
-    event.preventDefault();//don't reload , display result immediately once search is clicked 
-    $("#search_result").empty();
-    getFeatured();
-})
-
 document.getElementById("search-btn").addEventListener("click",function(event){
     console.log(event);//Showing the mouse event on the log.
     event.preventDefault();//don't reload , display result immediately once search is clicked 
@@ -16,40 +8,10 @@ document.getElementById("search-btn").addEventListener("click",function(event){
     }
     else{
         $("#search_result").empty();// Ensure that the search results portion is empty everytime the user enters a movie to search. if this line doesnt exist it will just append to the prev result.
-        $("#featured-films").empty();
+        $("#about-div").empty();
         getMovies(searchText);// Else , go ahead with retrieving the results
     }
 })
-
-
-async function getFeatured(){
-    await fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=a1f1d2936a5f5e9df6bfa7775884eaa6&language=en-US&page=1')
-    .then(Response => Response.json())
-    .then(data => {
-        console.log(data);//logging as one data
-        var featured_movies = data.results;
-        console.log(featured_movies);
-
-        let styleName="";
-        for(var i = 0; i < featured_movies.length; i++) {
-            var obj = featured_movies[i];//Individual datas extracted from the nested portion
-
-            if (obj.poster_path == "N/A"){
-                obj.poster_path = "not-found-image.jpg";
-                styleName = "na";
-            }
-
-            console.log(obj.title);//logging object titles
-            var image_link = 'https://image.tmdb.org/t/p/original'+obj.poster_path;
-            
-            $("#featured-films").append(`
-            <div class='featured-card'>
-                <img class="${styleName}" src ="${image_link}"></img>\
-                <h5>${obj.title}</h5>
-            </div>`)           
-        }
-    })
-}
 
 async function getMovies(searchText){
     //console.log(searchText);
@@ -78,7 +40,6 @@ async function getMovies(searchText){
                 obj.Poster = "not-found-image.jpg";
                 styleName = "na";
             }
-
             console.log(obj.Title);//logging object titles
             var id = obj.imdbID;
             $("#search_result").append(`
@@ -112,6 +73,7 @@ async function getInfo(id){
         var runtime = data.Runtime;
         var production = data.Production;
         var type = data.Type;
+        var imdbVotes=Number(data.imdbVotes);
         
         if (BoxOffice==undefined){
             var BoxOffice = "N/A";
@@ -136,7 +98,6 @@ async function getInfo(id){
         if (type == "game"){
             var TypeIdentify = "Game Age Rating : ";
         }
-
 
         if (production == ""){
             var producedText = "";
@@ -200,7 +161,7 @@ async function getInfo(id){
                                             </div>
                                         </div>
                                     </div>`);
-                                    
+                                
         document.getElementById('close-modal').onclick = function(){
             $(".modal").css({"display":"none"});
             $(".modal-content").empty();
@@ -209,4 +170,65 @@ async function getInfo(id){
             $(".modal-content").append(`<button id = "close-modal">X</button>`);   
         }
     })
+}
+document.getElementById("about-btn").addEventListener("click",function(event){
+    console.log(event);//Showing the mouse event on the log.
+    event.preventDefault();//don't reload , display result immediately once search is clicked 
+    $("#search_result").empty();
+    aboutSite();
+})
+function aboutSite(){ 
+    $("#about-div").append(`
+    <div>
+        <h1 class="highlights">Welcome to the Entertainment Search Site</h1>
+        <p>My name is Keerthana and I am the developer for this website. This website allows you to search for an entertainment title and learn more about it.</p>
+        <p>This site is powered by OMDb API. The OMDb API is a RESTful web service to obtain movie information.</p>
+        <p>Do contact me at the following social media platforms for further comments.</p>
+        <div class="socials">
+            <a href="https://www.instagram.com/k.eer_/"><img src="socials/instagram.png" alt="instagram-icon"></a>
+            <a href="https://github.com/keer1912"><img src="socials/github.png" alt="github-icon"></a>
+            <a href="https://www.linkedin.com/in/keerthana-keshaini-a094ba1a9/"><img src="socials/linkedin.png" alt="linkedin-icon"></a>
+        </div>
+        
+    </div>`);  
+
+}
+
+
+
+/*footer for all the different pages*/
+footer{
+    display: block;
+    margin: auto;
+    background-color: #1e2733;
+    font-size:15px;
+    text-align: center;
+}
+footer h4{
+    width:50%;
+    padding:15px 0px;
+    margin:auto;  
+    color:#707070;
+    font-weight: normal;
+}
+/*social media icons styling*/
+footer img{
+    width:25px;
+    padding:10px;
+    margin: 15px;
+    border:1px solid rgb(63, 63, 63); 
+    border-radius: 25px;
+}
+
+/*hover over footer img and have yellow border*/
+footer img:hover{
+    border: 1px solid yellow;
+    transition: 0.4s;
+    transform: scale(1.1);
+}
+
+/*div of the social media icon*/
+.socials{
+    width:50%;/*50% width*/
+    margin:auto;/*center of page*/
 }
