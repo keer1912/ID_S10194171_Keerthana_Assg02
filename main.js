@@ -1,3 +1,11 @@
+
+document.getElementById("topEntertainment-btn").addEventListener("click",function(event){
+    console.log(event);//Showing the mouse event on the log.
+    event.preventDefault();//don't reload , display result immediately once search is clicked 
+    $("#search_result").empty();
+    getFeatured();
+})
+
 document.getElementById("search-btn").addEventListener("click",function(event){
     console.log(event);//Showing the mouse event on the log.
     event.preventDefault();//don't reload , display result immediately once search is clicked 
@@ -8,10 +16,41 @@ document.getElementById("search-btn").addEventListener("click",function(event){
     }
     else{
         $("#search_result").empty();// Ensure that the search results portion is empty everytime the user enters a movie to search. if this line doesnt exist it will just append to the prev result.
+        $("#featured-films").empty();
         getMovies(searchText);// Else , go ahead with retrieving the results
     }
 })
-  
+
+
+async function getFeatured(){
+    await fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=a1f1d2936a5f5e9df6bfa7775884eaa6&language=en-US&page=1')
+    .then(Response => Response.json())
+    .then(data => {
+        console.log(data);//logging as one data
+        var featured_movies = data.results;
+        console.log(featured_movies);
+
+        let styleName="";
+        for(var i = 0; i < featured_movies.length; i++) {
+            var obj = featured_movies[i];//Individual datas extracted from the nested portion
+
+            if (obj.poster_path == "N/A"){
+                obj.poster_path = "not-found-image.jpg";
+                styleName = "na";
+            }
+
+            console.log(obj.title);//logging object titles
+            var image_link = 'https://image.tmdb.org/t/p/original'+obj.poster_path;
+            
+            $("#featured-films").append(`
+            <div class='featured-card'>
+                <img class="${styleName}" src ="${image_link}"></img>\
+                <h5>${obj.title}</h5>
+            </div>`)           
+        }
+    })
+}
+
 async function getMovies(searchText){
     //console.log(searchText);
     await fetch(`http://www.omdbapi.com?s=`+searchText+'&apikey=9a7c1c71')
@@ -51,7 +90,6 @@ async function getMovies(searchText){
         }
     })
 }
-
 
 
 async function getInfo(id){
@@ -123,7 +161,6 @@ async function getInfo(id){
                                     <div class="information">
                                         <div>
                                             <h1 class="movie-title">${title}</h1>
-                                            <button class = "favourite-btn" id="${id}" onclick="favItem(this.id)"><span title="Click to add to favourites">☆</span></button>
                                         </div>
 
                                         <div class="rated-div">
@@ -173,76 +210,3 @@ async function getInfo(id){
         }
     })
 }
-
-//event listener for favorite button
-$(document).ready(function () {
-    $("favourite-btn").click(function (event) {
-      event.preventDefault();
-      favItem(id);
-    });
-});
-
-async function favItem(id){
-    //console.log(id);
-    $(".modal").css({"display":"block"});
-    $('body').css("overflow", "hidden");//when i click learn more , i want the body aka the search result to be stagnent(not move).
-    await fetch('http://www.omdbapi.com?i='+id+'&apikey=9a7c1c71')
-    .then(Response => Response.json())
-    .then(data => {
-        var poster = data.Poster;
-        var title = data.Title;
-        var rated = data.Rated;
-    
-        var Existing = JSON.parse(localStorage.getItem("Favourite Entries"));
-    
-        //Check if item is existant in the localstorage
-         if (Existing == null) {
-        
-        // if the value is null , it creates an empty array
-            Existing = [];
-        }
-
-        //making an array for the data collected , with necessary details 
-        const latestFav = {Poster:`${poster}`, Title:`${title}`, Rated:`${rated}`};
-        // Pushes input value to Array
-
-        Existing.push(latestFav);
-        // Save allEntries back to local storage
-        localStorage.setItem("Favourite Entries", JSON.stringify(Existing));
-    })   
-}
-
-    document.getElementById("fav-btn").addEventListener("click",function(event){
-        $("#fav-modal").empty();
-        $("#search_result").empty();
-        console.log(event);//Showing the mouse event on the log.
-        event.preventDefault();//don't reload , display result immediately once search is clicked
-
-
-        let Existing = localStorage.getItem("Favourite Entries");
-        let state =    JSON.parse(Existing); 
-        let styleName="";
-
-        for (const[key,value] of Object.entries(state)){
-            //console.log(value.Poster);
-
-            if (value.Poster == "N/A"){
-                value.Poster = "not-found-image.jpg";
-                styleName = "na";
-            }
-
-            $("#fav-modal").append(`
-            <div class="card-container">
-                <div class="image_box">
-                    <img class="${styleName}" src ="${value.Poster}"></img>
-                </div>\
-                <div class="content">
-                    <h5 class="highlights">${value.Title}</h5>
-                    <h5>${value.Rated}</h5>
-                    <button><span title="Click to add to favourites">☆</span></button>
-                </div>
-            </div>`)  
-        }
-        
-    })
-

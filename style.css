@@ -30,7 +30,9 @@ header{
   position: relative;
 }
 
-
+.featured-card img{
+  width:200px;
+}
 .container { 
   margin:auto;
   position: relative; 
@@ -94,7 +96,7 @@ input:focus{
   width: 345px;
   height:450px;
   text-align: center;
-  background:rgba(0, 0, 0, 0.788);
+  background:rgba(0, 0, 0, 0.65);
   box-shadow: 13px 14px 37px -21px rgba(0,0,0,0.11);
   margin:30px;/*space around the card*/
   padding:15px;/*space inside the card*/
@@ -137,22 +139,6 @@ input:focus{
   flex-wrap: wrap;
   justify-content: center;/*center all the card to the center of the page*/
 } 
-
-.favourite-btn{
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0);
-  outline:none;
-  border:none;
-  font-size:40px;
-  color:yellow;
-  transform: translateY(3px); 
-}
-
-.favourite-btn:hover{
-  transform:scale(1.2)
-}
-
-
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -273,18 +259,6 @@ h3{
   transition: 0.3s;
 }
 
-#fav-modal{
-  background-color: rgba(0, 0, 0, 0.267);
-  width:80%;
-  display: flex;
-  flex-direction: column;
-  margin:auto;
-}
-
-.card-container img{
-  width: 200px;
-}
-
 @media screen and (min-width:270px) and (max-width:450px){
   .container { 
     width: 60%; 
@@ -316,14 +290,7 @@ h3{
     width: 100%;
     margin-top: 60px;
   }
-    
-  .favourite-btn{
-    padding:0px;
-  }
-  #fav-modal{
-    width:100%;
-    margin-top:60px;
-  }
+
 }
 
 @media screen and (min-width:450px) and (max-width:540px){
@@ -340,10 +307,6 @@ h3{
   .wrapper{
     width: 100%;
     margin-top: 60px;
-  }
-  #fav-modal{
-    width:80%;
-    margin-top:70px;
   }
 }
 
