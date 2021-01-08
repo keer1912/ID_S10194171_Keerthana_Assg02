@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 
+/*Styling the body for the web page*/
 body{
-  margin: 0;
+  margin: 0px;
   font-family: 'Poppins', sans-serif;
   background-color: #000;
   background-image: url(clapperboard.png);
@@ -11,12 +12,23 @@ body{
   background-attachment: fixed;
 }
 
+/*Styling the body for the web page*/
+header{
+  display: flex;
+  position: relative;
+}
+
+/*Setting margin for the logo*/
 .logo{
   margin-top: 5px;
 }
+
+/*Italic font-style in the input for the placeholder*/
 :placeholder-shown{
   font-style: italic;
 }
+
+/*Wrapping the search icon and input*/
 .wrapper{
   position:absolute;
   width:30%;
@@ -25,19 +37,14 @@ body{
   transform: translate(-50%,-50%);
 }
 
-header{
-  display: flex;
-  position: relative;
-}
-
-.featured-card img{
-  width:200px;
-}
+/*Container for the input and search btn*/
 .container { 
   margin:auto;
   position: relative; 
 } 
-input { 
+
+/*Styling input bar*/
+input{ 
   font-size:20px;
   color:white;
   padding: 5px; 
@@ -51,6 +58,7 @@ input {
   border-color: white;
 } 
 
+/*Wrapping the search icon and input*/
 #search-btn{ 
   position: absolute; 
   top: 0px; 
@@ -78,6 +86,29 @@ input:focus{
   outline:none;
 }
 
+#about-btn{
+  position: absolute; 
+  top: 45px;
+  right:30px;
+  background-color: rgba(255, 255, 255, 0);
+  outline:none;
+  border:none;
+  height: 30px;
+  font-size:20px;
+  color: white;
+  transition: transform 0.6s;
+  font-family: 'Poppins', sans-serif;
+}
+
+#about-btn:hover{
+  cursor: pointer;
+  background-color: yellow;
+  transition: transform 0.6s;
+  transform: scale(1.2);
+  border-radius: 20px;
+  color:#000
+}
+
 .not_found{
   text-align: center;
   margin-top:20px;
@@ -92,6 +123,17 @@ input:focus{
   color:yellow;
   font-size:26px;
 }
+
+#about-div{
+  width:80%;
+  margin:auto;
+  background-color: rgba(0, 0, 0, 0.383);
+}
+
+.about-content{
+  color:white;
+  padding:50px;
+}
 .movie-card{
   width: 345px;
   height:450px;
@@ -104,7 +146,7 @@ input:focus{
 
 .movie-card h5{
   color:white;  
-  font-size:17px;
+  font-size:18px;
   font-style: italic;
 }
 
@@ -132,7 +174,9 @@ input:focus{
   display: block;
   margin: auto;
   object-fit: contain;
+  transition: 0.3s;
 }
+
 
 #search_result{
   display: flex;
@@ -237,12 +281,7 @@ h3{
   font-size:20px;
   font-style:italic;
 }
-#about-div{
-  width: 80%;
-  margin: auto;
-  background-color: rgba(0, 0, 0, 0.274);
-  text-align: center;
-}
+
 /* The Close Button */
 #close-modal {
   position: absolute;
@@ -264,6 +303,41 @@ h3{
   transform:scale(1.2);
   transition: 0.3s;
 }
+
+/*About div when about site button is clicked*/
+
+
+.welcome{
+  font-family: 'Oswald', sans-serif;
+  margin:0px;
+  font-size:32px;
+  font-weight: 900;
+  color:rgb(84, 248, 188);
+}
+.socials{
+  display: block;
+  margin: auto;
+  background-color: #1e273300;
+  font-size:15px;
+  text-align: center;
+  padding-top:40px;
+}
+/*social media icons styling*/
+.socials img{
+  width:35px;
+  padding:10px;
+  margin: 15px;
+  border:1px solid rgba(255, 255, 255, 0.383); 
+  border-radius: 35px;
+}
+
+/*hover over footer img and have yellow border*/
+.socials img:hover{
+  border: 1px solid yellow;
+  transition: 0.4s;
+  transform: scale(1.1);
+}
+
 
 @media screen and (min-width:270px) and (max-width:450px){
   .container { 
@@ -296,6 +370,17 @@ h3{
     width: 100%;
     margin-top: 60px;
   }
+  #about-div{
+    margin-top: 60px;
+  }
+  .logo img{
+    width:170px;
+  }
+  #about-btn{
+    top:35px;
+    font-size:13px;
+    right:10px;
+  }
 
 }
 
@@ -314,6 +399,9 @@ h3{
     width: 100%;
     margin-top: 60px;
   }
+  #about-div{
+    margin-top: 60px;
+  }
 }
 
 
@@ -327,6 +415,9 @@ h3{
   }
   #fav-modal{
     margin-top:70px;
+  }
+  #about-div{
+    margin-top: 60px;
   }
 }
 
