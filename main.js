@@ -94,7 +94,7 @@ async function getInfo(id){
             
         //If movie does not have a poster, then I will display a stock not found image.
         if(poster == "N/A"){
-            var poster = "not-found-image.jpg";
+            var poster = "images/not-found-image.jpg";
         }
 
         //If the type of entertainment is a tv series then the age rating title will be amended.
