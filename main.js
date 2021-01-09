@@ -1,8 +1,8 @@
+/*Event listener when user clicks on the search icon*/
 document.getElementById("search-btn").addEventListener("click",function(event){
     console.log(event);//Showing the mouse event on the log.
     event.preventDefault();//don't reload , display result immediately once search is clicked 
     let searchText = document.getElementById('title_input').value.trim();//get the value of the movie - title
-
     if (searchText == ""){
         alert("Please enter a film");// if the search text recieved is empty , alert to the user
     }
@@ -13,6 +13,7 @@ document.getElementById("search-btn").addEventListener("click",function(event){
     }
 })
 
+/*function to retrieve data from the api after getting info from user*/
 async function getMovies(searchText){
     //console.log(searchText);
     await fetch(`http://www.omdbapi.com?s=`+searchText+'&apikey=9a7c1c71')
@@ -20,7 +21,7 @@ async function getMovies(searchText){
     .then(data => {
         console.log(data);//logging as one data
 
-                
+        /*If the movie is not found ,display an error message*/        
         if (data.Error == "Movie not found!"){
             $("#search_result").append(`
             <div class="not_found">
@@ -28,11 +29,13 @@ async function getMovies(searchText){
                 <p>Please enter another title</p>
             </div>`)      
         }
-    
+        
+        /*Retrieve the results*/
         var movies = data.Search;
-        //console.log(movies);
+        console.log(movies);
         let styleName = "";
 
+        /*Loop throught the mvoies informatiuon retrieved to extract specific data*/
         for(var i = 0; i < movies.length; i++) {
             var obj = movies[i];//Individual datas extracted from the nested portion
 
@@ -40,8 +43,11 @@ async function getMovies(searchText){
                 obj.Poster = "not-found-image.jpg";
                 styleName = "na";
             }
-            console.log(obj.Title);//logging object titles
+            //logging object titles
+            console.log(obj.Title);
             var id = obj.imdbID;
+            var votes = obj.imdbVotes;
+            //Append the results into the search results div to display to the user 
             $("#search_result").append(`
             <div class='movie-card'>
                 <img class="${styleName}" src ="${obj.Poster}"></img>\
@@ -52,7 +58,8 @@ async function getMovies(searchText){
     })
 }
 
-
+//The function that retrieves the data after the user clicks learn more. This function is called in the learn more button where it will get the id for that specific movie using 'this'
+// There after it will call the function , passing the id to the function and retrieve the data from the api then display it throught a modal.
 async function getInfo(id){
     console.log(id);
     $(".modal").css({"display":"block"});
@@ -60,6 +67,8 @@ async function getInfo(id){
     await fetch('http://www.omdbapi.com?i='+id+'&apikey=9a7c1c71')
     .then(Response => Response.json())
     .then(data => {
+
+        //All the possible data I can retrieve from the api
         var poster = data.Poster;
         var title = data.Title;
         var actors = data.Actors;
@@ -73,8 +82,8 @@ async function getInfo(id){
         var runtime = data.Runtime;
         var production = data.Production;
         var type = data.Type;
-        var imdbVotes=Number(data.imdbVotes);
         
+        //If some data is not found / not applicable , I will ammend the results accoridngly
         if (BoxOffice==undefined){
             var BoxOffice = "N/A";
         }
@@ -82,26 +91,33 @@ async function getInfo(id){
         if(production == "N/A"||production == undefined){
             var production = "";
         }
-
+            
+        //If movie does not have a poster, then I will display a stock not found image.
         if(poster == "N/A"){
             var poster = "not-found-image.jpg";
         }
 
+        //If the type of entertainment is a tv series then the age rating title will be amended.
         if (type == "series"){
             var TypeIdentify = "Television Age Rating : ";
         }
 
+        //If the type of entertainment is a movie series then the age rating title will be amended.
         if (type == "movie"){
             var TypeIdentify = "Movie Age Rating : ";
         }
 
+        //If the type of entertainment is a game then the age rating title will be amended.
         if (type == "game"){
             var TypeIdentify = "Game Age Rating : ";
         }
 
+        //If there is not information on who produced the title, then nothing will be displayed.
         if (production == ""){
             var producedText = "";
         }
+
+        //Else there will be a produced by text.
         else{
             var producedText = "Produced by";
         }
@@ -114,6 +130,8 @@ async function getInfo(id){
         //console.log(released);
         //console.log(imdbRating);
         //console.log(BoxOffice);
+
+        //This will append the information into the modal that will activated when the learn more button is clicked.
         $(".modal-content").append(`
                                     <div class="information">
                                         <img src="${poster}" alt="movie poster">
@@ -128,10 +146,15 @@ async function getInfo(id){
                                             <p class="rated">${TypeIdentify} ${rated}</p>
                                         </div>
 
+                                        <div class="actors-div">
+                                            <p class="actors">Cast: ${actors}</p>
+                                        </div>
+
+
                                         <div class="plot-div">
                                             <p class="plot">${synopsis}</p>
                                         </div>
-
+                                        
                                         <div class="genre-div">
                                             <p class="highlights">${genre}</p>
                                             <p class="produced">${producedText} ${production}</p>  
@@ -161,7 +184,8 @@ async function getInfo(id){
                                             </div>
                                         </div>
                                     </div>`);
-                                
+        
+        //When the close modal is clicked, The modal must be cleared in order for the next entertainment information to be appended.
         document.getElementById('close-modal').onclick = function(){
             $(".modal").css({"display":"none"});
             $(".modal-content").empty();
@@ -171,64 +195,32 @@ async function getInfo(id){
         }
     })
 }
+
+//Create an event listener for when the about site button is clicked. Call the method about when the about site button is clicked.
 document.getElementById("about-btn").addEventListener("click",function(event){
     console.log(event);//Showing the mouse event on the log.
     event.preventDefault();//don't reload , display result immediately once search is clicked 
     $("#search_result").empty();
-    aboutSite();
+    $("#about-div").empty();
+    $("#title_input").empty();
+    about();
 })
-function aboutSite(){ 
+
+//Append the information into the the about div.
+function about(){ 
     $("#about-div").append(`
-    <div>
-        <h1 class="highlights">Welcome to the Entertainment Search Site</h1>
-        <p>My name is Keerthana and I am the developer for this website. This website allows you to search for an entertainment title and learn more about it.</p>
-        <p>This site is powered by OMDb API. The OMDb API is a RESTful web service to obtain movie information.</p>
-        <p>Do contact me at the following social media platforms for further comments.</p>
+        <div class="about-content">
+            <h1 class="welcome">Welcome to the Entertainment Search Site</h1>
+            <p>My name is Keerthana and I am the developer for this website. This website allows you to search for an entertainment title and learn more about it.</p>
+            <p>This site is powered by OMDb API. The OMDb API is a RESTful web service to obtain movie information.</p>
+            <p>Do contact me at the following social media platforms for further comments.</p>
+        </div>
         <div class="socials">
             <a href="https://www.instagram.com/k.eer_/"><img src="socials/instagram.png" alt="instagram-icon"></a>
             <a href="https://github.com/keer1912"><img src="socials/github.png" alt="github-icon"></a>
             <a href="https://www.linkedin.com/in/keerthana-keshaini-a094ba1a9/"><img src="socials/linkedin.png" alt="linkedin-icon"></a>
-        </div>
-        
-    </div>`);  
-
+        </div> 
+    `);  
 }
 
 
-
-/*footer for all the different pages*/
-footer{
-    display: block;
-    margin: auto;
-    background-color: #1e2733;
-    font-size:15px;
-    text-align: center;
-}
-footer h4{
-    width:50%;
-    padding:15px 0px;
-    margin:auto;  
-    color:#707070;
-    font-weight: normal;
-}
-/*social media icons styling*/
-footer img{
-    width:25px;
-    padding:10px;
-    margin: 15px;
-    border:1px solid rgb(63, 63, 63); 
-    border-radius: 25px;
-}
-
-/*hover over footer img and have yellow border*/
-footer img:hover{
-    border: 1px solid yellow;
-    transition: 0.4s;
-    transform: scale(1.1);
-}
-
-/*div of the social media icon*/
-.socials{
-    width:50%;/*50% width*/
-    margin:auto;/*center of page*/
-}
