@@ -6,13 +6,13 @@ This website allows prospective users to search for an entertainment with the ti
 ## 1. Design Process
 As a user , I will want my website to be easy to access and understand. As an web developer , I would want my website's goal to be acheived and for the user to have a seamless experience while accessing my site. My webpage has 2 important interfaces where the user interacts with my website. The search bar and the about site button that is located on the right. The logo shows the users what the website is and in this case I included the site name , *Entertainment Search Site* in the logo for the user to know what site they are entering.
 
-### 2. The Search Bar
+## 2. The Search Bar
 The search bar is located at the center of the screen with a very simple design shwoing a search icon button. Firstly the color of the search bar was chosen to be white as it shows contrasts and does not blend in with the background chosen. The placeholder text *"Enter an entertainment title..."* is to help users understand how the data is expected to be entered. It serves as a short hint. The search icon exist for the user to know that they should press search after typing a data into the search bar. While these are very asic and easy to understand elements in a website , It should still be user friendly. Thus , I decided to design a simple yet visually appealing site that is not complex. This way , users can easily process the information on the site. 
 
-### The About Site *'button'*
+## 3. The About Site *'button'*
 The About Site *'button'* might not appear like a button at first glance , however when the user hovers over it , the background color of the button is highlight in yellow and the text color changes to black. I have made the cursor a pointer cursor as well which reads to the user that it is a clickable element on the website.
 
-##  How the site reacts
+# How the site reacts
  __*When the user enters the site*__
   - They enter a title into the search bar
   - Search result appears with cards showing possible entertainment titles based on what the user searched
@@ -35,7 +35,7 @@ The About Site *'button'* might not appear like a button at first glance , howev
   - When clicked , the site information is shown with methods to contact me.
 
 
-## Features implemented
+# Features implemented
 Aesthetics and Usability - __*Important as first impression matters*__
 - Consistency
 - Clear and appropriately sized text to view content
@@ -52,13 +52,17 @@ Mobile Compatibility
 
 There are many more features to be implemented in the future. currently , I can think of one feature I would like to implement
 
-### Features Left to Implement
-A feature would be allow users to favourite movies
+## Feature Left to Implement
+A feature would be to allow users favourite movies. This feature would make use of the *localStorage* property in Javascript. While I had attempted to implement this idea , my localstorage had duplicates thus I had scraped the idea.
 
-##
+### What the future feature would include
+*(Assuming the local storage is empty)*
+- A transparent star would be included in the modal beside the entertainment title when It appears
+- Users can select the star will will then add the poster , title , & rating to the local storage
+- When the item is in the local storage the star will be filled with yellow color , indicating the entertainment being in the local storage
+- There will be a favourites button that user can click to view their favourite entertainment titles
 
 ## Technologies Used
-
 - [HTML]
     - HTML provides the basic structure to the website. Everything from the header to the footer is implement here.
 - [CSS]
@@ -67,20 +71,7 @@ A feature would be allow users to favourite movies
 - [JS]
     - JS was used to create event listeners for the various button and also fect hinformation from the API.
      
-
-
-## Testing
-
-
-
+     
 ### Media
-
-
-
-
 Socials icon
-- Linkedin icon : https://www.flaticon.com/free-icon/linkedin_145807?term=linkedin&page=1&position=4
-
-- Github icon : https://www.flaticon.com/free-icon/github_733553?term=github&page=1&position=7&related_item_id=733553
-
-- Intstagram icon : https://www.flaticon.com/free-icon/instagram_174855?term=instagram&page=1&position=8&related_item_id=174855
+- Icon : https://www.flaticon.com/free-icon/linkedin_145807?term=linkedin&page=1&position=4
