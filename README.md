@@ -1,7 +1,7 @@
 # ID_Keerthana_S10194171A_Assignment_2
 
 # Website Aim
-This website allows prospective users to search for an entertainment with the title, which will in return produce the various possible search results using the search text that the user entered. Thereafter , the user can locate for their single chosen entertainment title and learn more. This site is powered by Online movie database , OMDB API, which is an online repository of movies, television series and games. The API has an exhaustive source of information about the cast, the production crew, more on the plot and even the box office.
+This website allows prospective users to search for an entertainment with the title, which will in return produce the various possible search results using the search text that the user entered. Thereafter , the user can locate for their single chosen entertainment title and learn more. This site is powered by Online movie database , [*OMDB API*](http://www.omdbapi.com/), which is an online repository of movies, television series and games. The API has an exhaustive source of information about the cast, the production crew, more on the plot and even the box office.
 
 ## 1. Design Process
 As a user , I will want my website to be easy to access and understand. As an web developer , I would want my website's goal to be acheived and for the user to have a seamless experience while accessing my site. My webpage has 2 important interfaces where the user interacts with my website. The search bar and the about site button that is located on the right. The logo shows the users what the website is and in this case I included the site name , *Entertainment Search Site* in the logo for the user to know what site they are entering.
