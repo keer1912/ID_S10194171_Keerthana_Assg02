@@ -59,8 +59,9 @@ A feature would be to allow users favourite movies. This feature would make use 
 *(Assuming the local storage is empty)*
 - A transparent star would be included in the modal beside the entertainment title when It appears
 - Users can select the star will will then add the poster , title , & rating to the local storage
-- When the item is in the local storage the star will be filled with yellow color , indicating the entertainment being in the local storage
+- When the item is in the local storage the star in the modal will be filled with yellow , indicating the entertainment being in the local storage
 - There will be a favourites button that user can click to view their favourite entertainment titles
+- Users will be allowed to remove the item or clear their favourites list
 
 ## Technologies Used
 - [HTML]
@@ -69,9 +70,12 @@ A feature would be to allow users favourite movies. This feature would make use 
     - CSS is used to style the items in the website. Such as the colors , fonts , sizes , transitions etc. 
       Essentially styles and design the website.
 - [JS]
-    - JS was used to create event listeners for the various button and also fect hinformation from the API.
+    - JS was used to create event listeners for the various button and also fecth informations from the API. JS was what made the site primarily intercative
      
-     
-### Media
-Socials icon
-- Icon : https://www.flaticon.com/free-icon/linkedin_145807?term=linkedin&page=1&position=4
+## References
+__*Inspiration for the modal design*__
+https://skempin.github.io/reactjs-tmdb-app/
+
+__*W3Schools Code reference for modal*__
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+
