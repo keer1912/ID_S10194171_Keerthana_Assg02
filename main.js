@@ -33,14 +33,14 @@ async function getMovies(searchText){
         /*Retrieve the results*/
         var movies = data.Search;
         console.log(movies);
-        let styleName = "";
+        let styleName = ""; 
 
-        /*Loop throught the mvoies informatiuon retrieved to extract specific data*/
+        /*Loop throught the mvoies information retrieved to extract specific data*/
         for(var i = 0; i < movies.length; i++) {
             var obj = movies[i];//Individual datas extracted from the nested portion
 
             if (obj.Poster == "N/A"){
-                obj.Poster = "not-found-image.jpg";
+                obj.Poster = "images/not-found-image.jpg";
                 styleName = "na";
             }
             //logging object titles
@@ -201,14 +201,12 @@ document.getElementById("about-btn").addEventListener("click",function(event){
     console.log(event);//Showing the mouse event on the log.
     event.preventDefault();//don't reload , display result immediately once search is clicked 
     $("#search_result").empty();
-    $("#about-div").empty();
-    $("#title_input").empty();
     about();
 })
 
 //Append the information into the the about div.
 function about(){ 
-    $("#about-div").append(`
+    $("#about-div").html(`
         <div class="about-content">
             <h1 class="welcome">Welcome to the Entertainment Search Site</h1>
             <p>My name is Keerthana and I am the developer for this website. This website allows you to search for an entertainment title and learn more about it.</p>

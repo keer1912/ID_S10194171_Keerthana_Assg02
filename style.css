@@ -58,7 +58,7 @@ input{
   border-color: white;
 } 
 
-/*Wrapping the search icon and input*/
+/*Styling the search icon (fa-fa-search)*/
 #search-btn{ 
   position: absolute; 
   top: 0px; 
@@ -72,11 +72,13 @@ input{
   outline:none;
 }
 
+/*Hover effect for the search icon*/
 #search-btn:hover{
   transform: scale(1.3);
   transition: transform .4s;
 }
 
+/*Giving the search icon white color and the size of 22px*/
 .fa.fa-search{
   color: white;
   font-size: 22px;
@@ -86,6 +88,7 @@ input:focus{
   outline:none;
 }
 
+/*Styling about aite button*/
 #about-btn{
   position: absolute; 
   top: 45px;
@@ -100,6 +103,7 @@ input:focus{
   font-family: 'Poppins', sans-serif;
 }
 
+/*Give the about site button a hover effect*/
 #about-btn:hover{
   cursor: pointer;
   background-color: yellow;
@@ -109,6 +113,7 @@ input:focus{
   color:#000
 }
 
+/*Styling the not found div when the use eneters a movie that is not found*/
 .not_found{
   text-align: center;
   margin-top:20px;
@@ -117,6 +122,8 @@ input:focus{
   background-color: rgba(0, 0, 0, 0.415);
   padding:15px;
 }
+
+/*Styles the not found text*/
 .not-found-alert{
   font-style: italic;
   font-weight: 700;
@@ -124,16 +131,55 @@ input:focus{
   font-size:26px;
 }
 
+/*Styling the about div*/
 #about-div{
   width:80%;
   margin:auto;
   background-color: rgba(0, 0, 0, 0.383);
 }
 
+/*Make the about content font to be white*/
 .about-content{
   color:white;
   padding:50px;
 }
+
+/*Style the header in the about div*/
+.welcome{
+  font-family: 'Oswald', sans-serif;
+  margin:0px;
+  font-size:32px;
+  font-weight: 900;
+  color:rgb(84, 248, 188);
+}
+
+/*socials in the about div*/
+.socials{
+  display: block;
+  margin: auto;
+  background-color: #1e273300;
+  font-size:15px;
+  text-align: center;
+  padding-top:40px;
+}
+
+/*social media icons styling*/
+.socials img{
+  width:35px;
+  padding:10px;
+  margin: 15px;
+  border:1px solid rgba(255, 255, 255, 0.383); 
+  border-radius: 35px;
+}
+
+/*hover over footer img and have yellow border*/
+.socials img:hover{
+  border: 1px solid yellow;
+  transition: 0.4s;
+  transform: scale(1.1);
+}
+
+/*Styling the movie card that is appended in to the search results*/
 .movie-card{
   width: 345px;
   height:450px;
@@ -144,16 +190,28 @@ input:focus{
   padding:15px;/*space inside the card*/
 }
 
+/*Styling the movie card image*/
+.movie-card img{
+  width:210px;
+  height:300px;
+  display: block;
+  margin: auto;
+  object-fit: contain;
+}
+
+/*Font-szie of the movie title in the movie card*/
 .movie-card h5{
   color:white;  
   font-size:18px;
   font-style: italic;
 }
 
+/*Style the noit found image to fit into the card automatically*/
 .na{
   object-fit: cover;
-
 }
+
+/*Styling the movie card button that shows "Learn More"*/
 .movie-card button{
   background-color: rgb(255, 255, 255);
   height:35px;
@@ -162,27 +220,27 @@ input:focus{
   width:100px;
   outline: none;
 }
+
+/*Hover effect for the learn more button*/
 .movie-card-btn:hover{
   background-color:rgb(255, 251, 0) ;
   transform: scale(1.2);
   transition: 0.3s ease-out;
   cursor:pointer;
 }
-.movie-card img{
-  width:210px;
-  height:300px;
-  display: block;
-  margin: auto;
-  object-fit: contain;
-  transition: 0.3s;
-}
 
-
+/*style The search result div to be flexible*/
 #search_result{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;/*center all the card to the center of the page*/
 } 
+
+.search_result_title{
+  text-align: center;
+  font-family:sans-serif;
+  color:white;
+}
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -211,16 +269,12 @@ input:focus{
   position:relative;
 }
 
+/*Style the individual contents inthe modal*/
 .movie-title{
   display:inline-block;
   margin:0;
   font-size:35px;
 }
-
-.modal-content h4{
-  font-size:25px;
-}
-
 
 .plot{
   font-size:16px;
@@ -282,7 +336,7 @@ h3{
   font-style:italic;
 }
 
-/* The Close Button */
+/* Styling The Close Button in the modal*/
 #close-modal {
   position: absolute;
   color: #000000;
@@ -304,41 +358,8 @@ h3{
   transition: 0.3s;
 }
 
-/*About div when about site button is clicked*/
 
-
-.welcome{
-  font-family: 'Oswald', sans-serif;
-  margin:0px;
-  font-size:32px;
-  font-weight: 900;
-  color:rgb(84, 248, 188);
-}
-.socials{
-  display: block;
-  margin: auto;
-  background-color: #1e273300;
-  font-size:15px;
-  text-align: center;
-  padding-top:40px;
-}
-/*social media icons styling*/
-.socials img{
-  width:35px;
-  padding:10px;
-  margin: 15px;
-  border:1px solid rgba(255, 255, 255, 0.383); 
-  border-radius: 35px;
-}
-
-/*hover over footer img and have yellow border*/
-.socials img:hover{
-  border: 1px solid yellow;
-  transition: 0.4s;
-  transform: scale(1.1);
-}
-
-
+/*MEDIA QUERY TO ADJUST ELEMENTS when screen size is affected*/
 @media screen and (min-width:270px) and (max-width:450px){
   .container { 
     width: 60%; 
