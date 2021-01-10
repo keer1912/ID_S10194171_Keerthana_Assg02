@@ -73,9 +73,9 @@ A feature would be to allow users favourite movies. This feature would make use 
     - JS was used to create event listeners for the various button and also fecth informations from the API. JS was what made the site primarily intercative
      
 ## References
-__*Inspiration for the modal design*__
+__*Inspiration for the modal design*__<br>
 https://skempin.github.io/reactjs-tmdb-app/
 
-__*W3Schools Code reference for modal*__
+__*W3Schools Code reference for modal*__<br>
 https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
 
