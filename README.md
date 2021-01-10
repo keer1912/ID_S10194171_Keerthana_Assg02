@@ -98,5 +98,9 @@ https://skempin.github.io/reactjs-tmdb-app/
 
 __*W3Schools Code reference for modal*__<br>
 https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+
+__*Not found image in card and modal*__<br>
+https://www.publicdomainpictures.net/en/view-image.php?image=270609&picture=not-found-image
 >>>>>>> eac50bab532ab5a040fac97f3eaf0397b6db0733
+
 
