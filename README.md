@@ -52,7 +52,7 @@ Mobile Compatibility
 
 There are many more features to be implemented in the future. currently , I can think of one feature I would like to implement
 
-## Feature Left to Implement
+## *Feature Left to Implement*
 A feature would be to allow users favourite movies. This feature would make use of the *localStorage* property in Javascript. While I had attempted to implement this idea , my localstorage had duplicates thus I had scraped the idea.
 
 ### What the future feature would include
@@ -63,7 +63,7 @@ A feature would be to allow users favourite movies. This feature would make use 
 - There will be a favourites button that user can click to view their favourite entertainment titles
 - Users will be allowed to remove the item or clear their favourites list
 
-## Technologies Used
+# Technologies Used
 - [HTML]
     - HTML provides the basic structure to the website. Everything from the header to the footer is implement here.
 - [CSS]
@@ -72,7 +72,7 @@ A feature would be to allow users favourite movies. This feature would make use 
 - [JS]
     - JS was used to create event listeners for the various button and also fecth informations from the API. JS was what made the site primarily intercative
      
-## References
+# References
 __*Inspiration for the modal design*__<br>
 https://skempin.github.io/reactjs-tmdb-app/
 
