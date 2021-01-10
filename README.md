@@ -62,7 +62,12 @@ A feature would be to allow users favourite movies. This feature would make use 
 - There will be a favourites button that user can click to view their favourite entertainment titles
 - Users will be allowed to remove the item or clear their favourites list
 
+# Deployment
+Feel free to use this for your own purpose. 
 
+# Link to webpage
+The following is the link to my page.<br>
+https://keer1912.github.io/ID_S10194171_Keerthana_Assg02_website/
 
 # Technologies Used
 - [HTML]
@@ -72,7 +77,7 @@ A feature would be to allow users favourite movies. This feature would make use 
       Essentially styles and design the website.
 - [JS]
     - JS was used to create event listeners for the various button and also fecth informations from the API. JS was what made the site primarily interactive
-     
+
 # References & media
 
 __*Inspiration for the modal design*__<br>
@@ -83,3 +88,6 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
 
 __*Not found image in card and modal*__<br>
 https://www.publicdomainpictures.net/en/view-image.php?image=270609&picture=not-found-image
+
+
+
