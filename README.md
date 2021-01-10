@@ -35,7 +35,6 @@ The About Site *'button'* might not appear like a button at first glance , howev
   - A hover effect with enlargement of the button,yellow background and a pointer cursor which shows that it is a clickable element
   - When clicked , the site information is shown with methods to contact me.
 
-
 # Features implemented
 Aesthetics and Usability - __*Important as first impression matters*__
 - Consistency
@@ -53,7 +52,7 @@ Mobile Compatibility
 
 ## *Feature Left to Implement*
 A feature would be to allow users favourite movies. This feature would make use of the *localStorage* property in Javascript. While I had attempted to implement this idea , my localstorage had duplicates thus I had scraped the idea.
->>>>>>> eac50bab532ab5a040fac97f3eaf0397b6db0733
+
 
 ### What the future feature would include
 *(Assuming the local storage is empty)*
@@ -63,7 +62,12 @@ A feature would be to allow users favourite movies. This feature would make use 
 - There will be a favourites button that user can click to view their favourite entertainment titles
 - Users will be allowed to remove the item or clear their favourites list
 
+# Deployment
+Feel free to use this for your own purpose. 
 
+# Link to webpage
+The following is the link to my page.<br>
+https://keer1912.github.io/ID_S10194171_Keerthana_Assg02_website/
 
 # Technologies Used
 - [HTML]
@@ -73,7 +77,7 @@ A feature would be to allow users favourite movies. This feature would make use 
       Essentially styles and design the website.
 - [JS]
     - JS was used to create event listeners for the various button and also fecth informations from the API. JS was what made the site primarily interactive
-     
+
 # References & media
 
 __*Inspiration for the modal design*__<br>
