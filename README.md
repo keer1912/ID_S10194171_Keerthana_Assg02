@@ -1,14 +1,5 @@
 # ID_Keerthana_S10194171A_Assignment_2
-<<<<<<< HEAD
-The website is a platform where users can enter an entertainment title and retrieve informations from it.This website is powered by Open Movie Database API, OMDB, which is a RESTful web service to obtain movie information. All content and images on the site are contributed and maintained by their users. 
-
-## Design Process
-
-
-
-## Features
-### Existing Features
-=======
+The website is a platform where users can enter an entertainment title and retrieve informations from it.This website is powered by Open Movie Database API, [OMDB], which is a RESTful web service to obtain movie information. All content and images on the site are contributed and maintained by their users. 
 
 # Website Aim
 This website allows prospective users to search for an entertainment with the title, which will in return produce the various possible search results using the search text that the user entered. Thereafter , the user can locate for their single chosen entertainment title and learn more. This site is powered by Online movie database , [*OMDB API*](http://www.omdbapi.com/), which is an online repository of movies, television series and games. The API has an exhaustive source of information about the cast, the production crew, more on the plot and even the box office.
@@ -58,13 +49,8 @@ Mobile Compatibility
 - Make use of cards that uses css framework , Flexbox
   - *Flexbox is a CSS technology that refers to the CSS Flexible Box Layout*
 - Users can access the site and have the full experience even if they are on the go and wish to learn about an entertainment
- 
->>>>>>> eac50bab532ab5a040fac97f3eaf0397b6db0733
 
 
-<<<<<<< HEAD
-### Features Left to Implement
-=======
 ## *Feature Left to Implement*
 A feature would be to allow users favourite movies. This feature would make use of the *localStorage* property in Javascript. While I had attempted to implement this idea , my localstorage had duplicates thus I had scraped the idea.
 >>>>>>> eac50bab532ab5a040fac97f3eaf0397b6db0733
@@ -77,12 +63,8 @@ A feature would be to allow users favourite movies. This feature would make use 
 - There will be a favourites button that user can click to view their favourite entertainment titles
 - Users will be allowed to remove the item or clear their favourites list
 
-<<<<<<< HEAD
-## Testing
 
 
-### Media
-=======
 # Technologies Used
 - [HTML]
     - HTML provides the basic structure to the website. Everything from the header to the footer is implement here.
@@ -90,9 +72,10 @@ A feature would be to allow users favourite movies. This feature would make use 
     - CSS is used to style the items in the website. Such as the colors , fonts , sizes , transitions etc. 
       Essentially styles and design the website.
 - [JS]
-    - JS was used to create event listeners for the various button and also fecth informations from the API. JS was what made the site primarily intercative
+    - JS was used to create event listeners for the various button and also fecth informations from the API. JS was what made the site primarily interactive
      
-# References
+# References & media
+
 __*Inspiration for the modal design*__<br>
 https://skempin.github.io/reactjs-tmdb-app/
 
@@ -101,6 +84,6 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
 
 __*Not found image in card and modal*__<br>
 https://www.publicdomainpictures.net/en/view-image.php?image=270609&picture=not-found-image
->>>>>>> eac50bab532ab5a040fac97f3eaf0397b6db0733
+
 
 
