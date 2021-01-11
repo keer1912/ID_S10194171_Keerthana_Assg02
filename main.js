@@ -16,7 +16,7 @@ document.getElementById("search-btn").addEventListener("click",function(event){
 /*function to retrieve data from the api after getting info from user*/
 async function getMovies(searchText){
     //console.log(searchText);
-    await fetch(`http://www.omdbapi.com?s=`+searchText+'&apikey=9a7c1c71')
+    await fetch(`https://www.omdbapi.com?s=`+searchText+'&apikey=9a7c1c71')
     .then(Response => Response.json())
     .then(data => {
         console.log(data);//logging as one data
@@ -64,7 +64,7 @@ async function getInfo(id){
     console.log(id);
     $(".modal").css({"display":"block"});
     $('body').css("overflow", "hidden");//when i click learn more , i want the body aka the search result to be stagnent(not move).
-    await fetch('http://www.omdbapi.com?i='+id+'&apikey=9a7c1c71')
+    await fetch('https://www.omdbapi.com?i='+id+'&apikey=9a7c1c71')
     .then(Response => Response.json())
     .then(data => {
 
