@@ -63,7 +63,25 @@ A feature would be to allow users favourite movies. This feature would make use 
 - Users will be allowed to remove the item or clear their favourites list
 
 # Deployment
-Feel free to use this for your own purpose. 
+Feel free to use this for your own purpose. The following are the steps to get you started on cloning my repository
+
+__*Step 1*__<br>
+- Ensure you have a github account
+
+__*Step 2*__<br>
+- Open Github , Navigate to the main page of my repository by clicking on [*this*](https://github.com/keer1912/ID_S10194171_Keerthana_Assg02_website)
+- Above all the files , locate the green button that says __*'Code'*__
+
+__*Step 3*__<br>
+- Above all the files , locate the green button that says __*'Code'*__
+
+__*Step 4*__<br>
+- Click  Open with GitHub Desktop to clone and open the repository with GitHub Desktop.
+
+__*Step 5*__<br>
+- Follow the prompts in GitHub Desktop to complete the clone.
+
+__*And you're good to go !*__<br>
 
 # Link to webpage
 The following is the link to my page.<br>
@@ -88,6 +106,9 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
 
 __*Not found image in card and modal*__<br>
 https://www.publicdomainpictures.net/en/view-image.php?image=270609&picture=not-found-image
+
+__*Steps to clone a repository*__<br>
+https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository
 
 
 
